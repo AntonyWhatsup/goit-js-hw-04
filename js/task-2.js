@@ -1,14 +1,33 @@
-function makeArray(firstArray, secondArray, maxLength) {
-  const combinedArray = firstArray.concat(secondArray);
-  if (combinedArray.length > maxLength) {
-      return combinedArray.slice(0, maxLength);
+function calcAverageCalories(days) {
+    if (days.length === 0) return 0;
+    const totalCalories = days.reduce((sum, day) => sum + day.calories, 0);
+    return totalCalories / days.length;
   }
-  return combinedArray;
-}
-
-
-console.log(makeArray(["Mango", "Poly"], ["Ajax", "Chelsea"], 3)); // ["Mango", "Poly", "Ajax"]
-console.log(makeArray(["Mango", "Poly"], ["Ajax", "Chelsea"], 5)); // ["Mango", "Poly", "Ajax", "Chelsea"]
-console.log(makeArray([], ["Ajax", "Chelsea"], 2)); // ["Ajax", "Chelsea"]
-console.log(makeArray(["Mango"], [], 1)); // ["Mango"]
-console.log(makeArray(["Mango", "Poly"], ["Ajax", "Chelsea"], 4)); // ["Mango", "Poly", "Ajax", "Chelsea"]
+  
+  console.log(
+    calcAverageCalories([
+      { day: "monday", calories: 3010 },
+      { day: "tuesday", calories: 3200 },
+      { day: "wednesday", calories: 3120 },
+      { day: "thursday", calories: 2900 },
+      { day: "friday", calories: 3450 },
+      { day: "saturday", calories: 3280 },
+      { day: "sunday", calories: 3300 }
+    ])
+  );
+  
+  console.log(
+    calcAverageCalories([
+      { day: "monday", calories: 2040 },
+      { day: "tuesday", calories: 2270 },
+      { day: "wednesday", calories: 2420 },
+      { day: "thursday", calories: 1900 },
+      { day: "friday", calories: 2370 },
+      { day: "saturday", calories: 2280 },
+      { day: "sunday", calories: 2610 }
+    ])
+  );
+  
+  console.log(
+    calcAverageCalories([])
+  );
